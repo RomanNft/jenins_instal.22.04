@@ -1,0 +1,32 @@
+"Оновлення пакетів: Переконайтеся, що всі пакети вашої системи Ubuntu оновлені до останньої версії:
+
+sudo apt update
+sudo apt upgrade
+Установка Java: Jenkins працює на платформі Java, тому вам потрібно встановити JDK (Java Development Kit). У Ubuntu 22.04 ви можете використовувати OpenJDK:
+
+sudo apt install default-jdk
+Додавання репозиторія Jenkins: Додайте ключ та репозиторій Jenkins у вашу систему:
+
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+Установка Jenkins: Тепер встановіть Jenkins за допомогою apt:
+
+sudo apt update
+sudo apt install jenkins
+Запуск Jenkins: Після встановлення Jenkins буде запущений автоматично. Однак, якщо цього не сталося, ви можете запустити його вручну:
+
+sudo systemctl start jenkins
+Перевірка статусу Jenkins: Переконайтеся, що Jenkins успішно запущений:
+
+sudo systemctl status jenkins
+Налаштування брандмауера: Якщо у вас увімкнений брандмауер, переконайтеся, що порт 8080 (за замовчуванням використовуваний Jenkins) дозволений для вхідних з'єднань:
+
+sudo ufw allow 8080
+Отримання пароля для встановлення: При першому запуску Jenkins необхідно буде отримати пароль для встановлення. Ви можете знайти його у файлі:
+
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+Доступ до Jenkins через браузер: Відкрийте браузер та перейдіть за адресою http://your_server_ip_or_domain:8080. Введіть пароль для встановлення, який ви отримали на кроці 8.
+
+Встановлення плагінів та завершення налаштування: Дотримуйтесь інструкцій щодо встановлення плагінів та завершення налаштування Jenkins.
+
+Вітаю, тепер у вас встановлений Jenkins на Ubuntu 22.04!"
